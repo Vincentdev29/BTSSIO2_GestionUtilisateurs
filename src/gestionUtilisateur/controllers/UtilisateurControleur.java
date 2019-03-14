@@ -2,6 +2,8 @@ package gestionUtilisateur.controllers;
 
 import gestionUtilisateurs.models.dataAccess.UtilisateurDAO;
 
+import gestionUtilisateur.metier.Utilisateur;
+
 /**
  * Controleur des fonctionnalités liées aux utilisateurs
  * Opère le lien entre l'interface graphique et les modèles
@@ -19,9 +21,12 @@ public class UtilisateurControleur {
 	 *  
 	 * @return l'objet dao
 	 */
+	// Commenté le temps de déterminé son utilité et son niveau de sécurité
+	/*
 	public UtilisateurDAO getDAO(){
 		return userDAO;
 	}
+	*/
 	
 	/**
 	 * Envoie au modèle les informations de connection
@@ -30,6 +35,18 @@ public class UtilisateurControleur {
 	 * @param password mot de passe utilisateur
 	 */
 	public void connectDatabase(String userName, String password){
-		userDAO.connectDatabase(userName, password);
+		this.userDAO.connectDatabase(userName, password);
+	}
+	
+	/**
+	 * Envoie au modèle pour insertion de nouvel utilisateur dans la base de données
+	 * 
+	 * @param utilisateur
+	 * @param login
+	 * @param mdp
+	 * @param dateEmbauche
+	 */
+	public void creerNouvelUtilisateur(Utilisateur utilisateur, String login, String mdp, String dateEmbauche){
+		this.userDAO.creerNouvelleUtilisateur(utilisateur, login, mdp, dateEmbauche);
 	}
 }

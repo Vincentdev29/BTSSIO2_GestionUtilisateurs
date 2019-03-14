@@ -59,6 +59,7 @@ public class ConnectDAO {
 		if (connect == null){
 			try{
 				connect = DriverManager.getConnection(url, user, passwd);
+				System.out.println("Connection effectuée");
 			}catch (SQLException e){
 				e.printStackTrace();
 			}
@@ -77,5 +78,6 @@ public class ConnectDAO {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("Connection fermée");
 	}
 }
