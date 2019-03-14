@@ -14,10 +14,21 @@ public class UtilisateurControleur {
 		userDAO = new UtilisateurDAO();
 	}
 	
+	/**
+	 * Retour de l'objet UtilisateurDAO
+	 *  
+	 * @return l'objet dao
+	 */
 	public UtilisateurDAO getDAO(){
 		return userDAO;
 	}
 	
+	/**
+	 * Envoie au modèle les informations de connection
+	 * 
+	 * @param userName pseudo de l'utilisateur
+	 * @param password mot de passe utilisateur
+	 */
 	public void connectDatabase(String userName, String password){
 		userDAO.connectDatabase(userName, password);
 	}
