@@ -41,8 +41,8 @@ public class ConnectDAO {
 	 * Méthode de paramétrage des identifiants
 	 * et mot de passe pour s'identifier à la base de données
 	 * 
-	 * @param userName
-	 * @param userPassword
+	 * @param userName pseudo de l'utilisateur
+	 * @param userPassword mot de passe de l'utilisateur
 	 */
 	public static void setCredentials(String userName, String userPassword)
 	{
