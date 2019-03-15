@@ -72,6 +72,34 @@ public class UtilisateurDAO {
 	}
 	
 	/**
+	 * Métode de modification de l'utilisateur dans la base de données
+	 * 
+	 * @param utilisateur
+	 */
+	public void modifierUtilisateur(Utilisateur utilisateur) {
+		try {
+			String query = "update visiteur "
+					+ "set nom = ?, prenom = ?, adresse = ?, cp = ?, ville = ?, statut = ?"
+					+ "where id = ?";
+		
+			PreparedStatement statement = connect.prepareStatement(query);
+			
+			statement.setString(1, utilisateur.getNom());
+			statement.setString(2, utilisateur.getPrenom());
+			statement.setString(3, utilisateur.getAdresse());
+			statement.setString(4, utilisateur.getCp());
+			statement.setString(5, utilisateur.getVille());
+			statement.setString(6, utilisateur.getStatut());
+			statement.setString(7, utilisateur.getId());
+			
+			statement.execute();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
 	 * @param id identifant de l'utilsateur à rechercher dans la BdD
 	 * @return un objet Utilisateur ou null
 	 */
