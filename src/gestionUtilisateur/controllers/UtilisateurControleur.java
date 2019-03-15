@@ -49,4 +49,13 @@ public class UtilisateurControleur {
 	public void creerNouvelUtilisateur(Utilisateur utilisateur, String login, String mdp, String dateEmbauche){
 		this.userDAO.creerNouvelleUtilisateur(utilisateur, login, mdp, dateEmbauche);
 	}
+	
+	/**
+	 * Envoie au modèle pour modification d'utilisateur dans la base de données
+	 * 
+	 * @param utilisateur
+	 */
+	public void modifierUtilisateur(Utilisateur utilisateur) {
+		this.userDAO.modifierUtilisateur(utilisateur);
+	}
 }
