@@ -2,6 +2,8 @@ package gestionUtilisateur.controllers;
 
 import gestionUtilisateurs.models.dataAccess.UtilisateurDAO;
 
+import java.util.List;
+
 import gestionUtilisateur.metier.Utilisateur;
 
 /**
@@ -57,5 +59,25 @@ public class UtilisateurControleur {
 	 */
 	public void modifierUtilisateur(Utilisateur utilisateur) {
 		this.userDAO.modifierUtilisateur(utilisateur);
+	}
+	
+	/**
+	 * Retire l'utilisateur grâce à son id
+	 * 
+	 * @param id
+	 * @return utilisateur
+	 */
+	public Utilisateur findById(String id) {
+		return this.userDAO.findById(id);
+	}
+	
+	/**
+	 * Retire une liste d'utilisateur grâce à leur nom
+	 * 
+	 * @param filtreNom
+	 * @return liste d'utilisateur
+	 */
+	public List<Utilisateur> findByNom(String filtreNom) {
+		return this.userDAO.findByNom(filtreNom);
 	}
 }
