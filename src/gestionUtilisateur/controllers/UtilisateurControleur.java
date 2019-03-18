@@ -67,17 +67,21 @@ public class UtilisateurControleur {
 	 * @param id
 	 * @return utilisateur
 	 */
-	public Utilisateur findById(String id) {
-		return this.userDAO.findById(id);
+	public Utilisateur findById(String idUtilisateur) {
+		return this.userDAO.findById(idUtilisateur);
 	}
 	
 	/**
 	 * Retire une liste d'utilisateur grâce à leur nom
 	 * 
+	 * Le signe '%' est ajouté pour la requête SQL 
+	 * qui permettra la recherche de toutes les chaines qui
+	 * contienne le nom ou la chaine envoyer.
+	 * 
 	 * @param filtreNom
 	 * @return liste d'utilisateur
 	 */
 	public List<Utilisateur> findByNom(String filtreNom) {
-		return this.userDAO.findByNom(filtreNom);
+		return this.userDAO.findByNom("%" + filtreNom + "%");
 	}
 }
