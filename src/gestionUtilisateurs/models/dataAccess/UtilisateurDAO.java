@@ -100,6 +100,17 @@ public class UtilisateurDAO {
 	}
 	
 	/**
+	 * Retourne un utilisateur contenant toutes ces infos non liée à sa connexion
+	 * 
+	 * @param id identifiant de l'utilisateur à rechercher dans la BDD
+	 * @return
+	 */
+	public Utilisateur findByIdInfoUtilisateur(String id){
+		Utilisateur unUtilisateur = null;
+		return unUtilisateur;
+	}
+	
+	/**
 	 * @param id identifant de l'utilsateur à rechercher dans la BdD
 	 * @return un objet Utilisateur ou null
 	 */

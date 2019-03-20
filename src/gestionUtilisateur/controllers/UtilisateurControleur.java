@@ -62,6 +62,16 @@ public class UtilisateurControleur {
 	}
 	
 	/**
+	 * Envoie au modèle pour récupére les informations d'un utilisateur
+	 * 
+	 * @param id identifiant de l'utilisateur
+	 * @return utilisateur 
+	 */
+	public Utilisateur findByIdInfoUtilisateur(String id){
+		return this.userDAO.findByIdInfoUtilisateur(id);
+	}
+	
+	/**
 	 * Retire l'utilisateur grâce à son id
 	 * 
 	 * @param id
