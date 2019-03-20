@@ -107,6 +107,19 @@ public class UtilisateurDAO {
 	 */
 	public Utilisateur findByIdInfoUtilisateur(String id){
 		Utilisateur unUtilisateur = null;
+		try{
+			String query = "select id, nom, prenom, adresse, cp, ville, dateEmbauche, statut "
+					+ "from visiteur "
+					+ "where id = ?";
+			PreparedStatement statement = connect.prepareStatement(query);
+			statement.setString(1, id);
+			ResultSet result = statement.executeQuery();
+			if (result.first()){
+					unUtilisateur = new Utilisateur(id, result.getString("nom"), result.getString("prenom"), result.getString("adresse"), result.getString("cp"), result.getString("ville"), result.getString("dateEmbauche"), result.getString("statut"));
+			}
+		}catch (SQLException e){
+			e.printStackTrace();
+		}
 		return unUtilisateur;
 	}
 	
@@ -117,7 +130,7 @@ public class UtilisateurDAO {
 	public Utilisateur findById(String id) {
 		Utilisateur unUtilisateur = null;
 		try {
-			PreparedStatement statement = connect.prepareStatement("select * from utilisateur where id =  ?");
+			PreparedStatement statement = connect.prepareStatement("select * from visiteur where id =  ?");
 			statement.setString(1, id);
 			ResultSet result = statement.executeQuery();
 			if (result.first())
