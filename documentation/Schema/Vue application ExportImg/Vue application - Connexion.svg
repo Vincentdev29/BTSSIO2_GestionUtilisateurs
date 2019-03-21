@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="14cm" height="9cm" viewBox="19 19 272 163" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="20" y="20" width="270" height="160"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="20" y="20" width="270" height="160"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="120" y="40">
+    <tspan x="120" y="40">Connexion</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="50" y="70" width="180" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="50" y="70" width="180" height="20"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="50" y="120" width="180" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="50" y="120" width="180" height="20"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="40" y="60">
+    <tspan x="40" y="60">Identifiant</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="40" y="110">
+    <tspan x="40" y="110">Mot de passe</tspan>
+  </text>
+  <g>
+    <g>
+      <rect style="fill: #ffffff" x="210" y="150" width="70" height="20"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="210" y="150" width="70" height="20"/>
+    </g>
+    <text font-size="11.2889" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="245" y="163.925">
+      <tspan x="245" y="163.925">Connecter</tspan>
+    </text>
+  </g>
+</svg>
