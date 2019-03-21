@@ -36,6 +36,14 @@ public class ConnectDAO {
 	 */
 	private static Connection connect = null;
 	
+	/**
+	 * 
+	 * Méthode de paramétrage des identifiants
+	 * et mot de passe pour s'identifier à la base de données
+	 * 
+	 * @param userName pseudo de l'utilisateur
+	 * @param userPassword mot de passe de l'utilisateur
+	 */
 	public static void setCredentials(String userName, String userPassword)
 	{
 		user = userName;
@@ -51,6 +59,7 @@ public class ConnectDAO {
 		if (connect == null){
 			try{
 				connect = DriverManager.getConnection(url, user, passwd);
+				System.out.println("Connection effectuée");
 			}catch (SQLException e){
 				e.printStackTrace();
 			}
@@ -69,5 +78,6 @@ public class ConnectDAO {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("Connection fermée");
 	}
 }
