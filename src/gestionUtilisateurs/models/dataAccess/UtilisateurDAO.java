@@ -34,6 +34,7 @@ public class UtilisateurDAO {
 	 * @param userPassword mot de passe de l'utilisateur
 	 */
 	public void connectDatabase(String userName, String userPassword){
+		ConnectDAO.generateJDBCUrl();
 		ConnectDAO.setCredentials(userName, userPassword);
 		connect = ConnectDAO.getInstance();
 	}
