@@ -9,3 +9,5 @@ Application de gestion des utilisateurs.  Création d'une interface graphique. L
 ## Configuration
 
 Voir fichier de conf pour configurer la connection. En spécifiant le type de base de données, l'url de la base et son nom.
+
+[*Documentation conception et technique*](./documentation/DOC.md)
