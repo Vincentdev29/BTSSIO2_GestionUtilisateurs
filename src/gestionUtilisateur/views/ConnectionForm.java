@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
- 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,22 +17,26 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-public class ConnectionForm extends JFrame
+import gestionUtilisateur.controllers.UtilisateurControleur;
+
+public class ConnectionForm extends JFrame implements ActionListener
 {
+	private UtilisateurControleur utilisateurControleur;
 	
-	private JLabel labLogin = new JLabel("Enter username: ");
-	private JLabel labMDP = new JLabel("Enter password: ");
+	private JLabel labLogin = new JLabel("Identifiant: ");
+	private JLabel labMDP = new JLabel("Mot de passe: ");
 	private JTextField txtLogin = new JTextField(20);
 	private JPasswordField txtMDP = new JPasswordField(20);
-	private JButton btnValider = new JButton("Login");
+	private JButton btnValider = new JButton("Valider");
 	
-	public ConnectionForm() 
+	public ConnectionForm(UtilisateurControleur u) 
 	{
-		super();
+		this.utilisateurControleur = u;
 		
 		// create a new panel with GridBagLayout manager
 		JPanel fenetre = new JPanel(new GridBagLayout());
-		fenetre.setBackground(Color.blue);
+		fenetre.setBackground(Color.cyan);
+		
 		
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.anchor = GridBagConstraints.WEST;
@@ -58,13 +64,33 @@ public class ConnectionForm extends JFrame
 		fenetre.add(btnValider, constraints);
 	
 		// set border for the panel
-		fenetre.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Login Panel"));
+		fenetre.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Connection"));
 	
 		// add the panel to this frame
 		add(fenetre);
 	
 		pack();
 		setLocationRelativeTo(null);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{	
+		if(e.getSource() == btnValider)
+		{
+			try
+			{
+				utilisateurControleur.connectDatabase(txtLogin.toString(), txtMDP.toString());
+				//fenetre.setVisible(false);
+				Accueil frame = new Accueil(utilisateurControleur);
+				frame.setVisible(true);
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+			}
+		}
+		
 	}
 	
 }
