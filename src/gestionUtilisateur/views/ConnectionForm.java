@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -22,7 +23,7 @@ import gestionUtilisateur.controllers.UtilisateurControleur;
 public class ConnectionForm extends JFrame implements ActionListener
 {
 	private UtilisateurControleur utilisateurControleur;
-	
+	JPanel fenetre = new JPanel(new GridBagLayout());
 	private JLabel labLogin = new JLabel("Identifiant: ");
 	private JLabel labMDP = new JLabel("Mot de passe: ");
 	private JTextField txtLogin = new JTextField(20);
@@ -34,7 +35,7 @@ public class ConnectionForm extends JFrame implements ActionListener
 		this.utilisateurControleur = u;
 		
 		// create a new panel with GridBagLayout manager
-		JPanel fenetre = new JPanel(new GridBagLayout());
+		
 		fenetre.setBackground(Color.cyan);
 		
 		
@@ -62,6 +63,7 @@ public class ConnectionForm extends JFrame implements ActionListener
 		constraints.gridwidth = 2;
 		constraints.anchor = GridBagConstraints.CENTER;
 		fenetre.add(btnValider, constraints);
+		btnValider.addActionListener(this);
 	
 		// set border for the panel
 		fenetre.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Connection"));
@@ -73,15 +75,17 @@ public class ConnectionForm extends JFrame implements ActionListener
 		setLocationRelativeTo(null);
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) 
 	{	
-		if(e.getSource() == btnValider)
+		Object source = e.getSource();
+		if(source == btnValider)
 		{
+			System.out.println("Vous avez cliqué sur valider !");
 			try
 			{
 				utilisateurControleur.connectDatabase(txtLogin.toString(), txtMDP.toString());
-				//fenetre.setVisible(false);
+				fenetre.setVisible(false);
 				Accueil frame = new Accueil(utilisateurControleur);
 				frame.setVisible(true);
 			}
@@ -89,6 +93,12 @@ public class ConnectionForm extends JFrame implements ActionListener
 			{
 				ex.printStackTrace();
 			}
+		}
+		else
+		{
+			System.out.println("la connection n'a pas marché !");
+			JOptionPane msgErreur = new JOptionPane();
+			msgErreur.showMessageDialog(null, "Message d'erreur", "Erreur", JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}

@@ -23,6 +23,7 @@ public class Accueil extends JFrame
 {
 	private UtilisateurControleur utilisateurControleur;
 	
+	JPanel fenetre = new JPanel(new GridBagLayout());
 
 	private JLabel labNom = new JLabel("Nom: ");
 	private JLabel labId = new JLabel("Id: ");
@@ -39,7 +40,7 @@ public class Accueil extends JFrame
 	{
 		this.utilisateurControleur = u;
 		
-		JPanel fenetre = new JPanel(new GridBagLayout());
+		
 		fenetre.setBackground(Color.cyan);
 		
 		GridBagConstraints constraints = new GridBagConstraints();
@@ -49,20 +50,30 @@ public class Accueil extends JFrame
 		fenetre.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Accueil"));
 		
 		constraints.gridx = 0;
+		constraints.gridy = 0;
+		fenetre.add(labNom, constraints);
+		
+		constraints.gridx = 1;
+		fenetre.add(txtNom, constraints);
+		
+		constraints.gridx = 2;
+		fenetre.add(btnChercherNom, constraints);
+		
+		constraints.gridx = 3;
+		fenetre.add(labId, constraints);
+		
+		constraints.gridx = 4;
+		fenetre.add(txtId, constraints);
+		
+		constraints.gridx = 5;
+		fenetre.add(btnChercherId, constraints);
+		
+		constraints.gridx = 5;
 		constraints.gridy = 1;
-		fenetre.add(labNom, txtNom);
+		fenetre.add(btnNouvelUtilisateur, constraints);
 		
-		constraints.gridx = 0;
 		constraints.gridy = 2;
-		fenetre.add(labId, txtId);
-		
-		constraints.gridx = 0;
-		constraints.gridy = 2;
-		fenetre.add(btnNouvelUtilisateur);
-		
-		constraints.gridx = 0;
-		constraints.gridy = 2;
-		fenetre.add(btnModifierUtilisateur);
+		fenetre.add(btnModifierUtilisateur, constraints);
 		
 		
 		add(fenetre);

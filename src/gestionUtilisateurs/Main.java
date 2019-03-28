@@ -3,6 +3,7 @@ package gestionUtilisateurs;
 import java.awt.EventQueue;
 
 import gestionUtilisateur.controllers.UtilisateurControleur;
+import gestionUtilisateur.views.Accueil;
 import gestionUtilisateur.views.ConnectionForm;
 
 public class Main 
@@ -17,7 +18,7 @@ public class Main
 			{
 				try 
 				{
-					ConnectionForm frame = new ConnectionForm(utilisateurControleur);
+					Accueil frame = new Accueil(utilisateurControleur);
 					frame.setVisible(true);
 				} 
 				catch (Exception e) 
