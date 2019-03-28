@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Représente une connection à la base de données
@@ -23,7 +22,7 @@ public class ConnectDAO {
 	/**
 	 * URL de connection
 	 */
-	private static String url = "jdbc:mysql://localhost/gsb-frais";
+	private static String url = "";
 	
 	/**
 	 * Nom du user
@@ -55,8 +54,11 @@ public class ConnectDAO {
 		passwd = userPassword;
 	}
 	
+	/**
+	 * Genere une url pour la connection à la base de données.
+	 * Information provenant du fichier de configuration.
+	 */
 	public static void generateJDBCUrl() {
-		String urlGeneree = "";
 		String conf_base = "./gestion_utilisateur.conf";
 		HashMap<String, String> mapConfiguration = new HashMap<String, String>();
 		BufferedReader reader;
@@ -68,7 +70,6 @@ public class ConnectDAO {
 			String line = reader.readLine();
 			
 			while (line != null) {
-				String str;
 				// Elimination des commentaires
 				if (!line.contains("#") && !line.contentEquals("")) {
 					// Separation variable/valeur
@@ -89,8 +90,19 @@ public class ConnectDAO {
 			e.printStackTrace();
 		}
 		
-		urlGeneree = "jdbc:" + mapConfiguration.get("type_bdd") + "://" + mapConfiguration.get("adresse_bdd") + "/" + mapConfiguration.get("nom_bdd");
-		url = urlGeneree;
+		url = "jdbc:" + mapConfiguration.get("type_bdd") + "://" + mapConfiguration.get("adresse_bdd") + "/" + mapConfiguration.get("nom_bdd");
+	}
+	
+	/**
+	 * 
+	 * @return état de l'url
+	 */
+	public static boolean isURLEmpty() {
+		if(url == "") {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	/**
