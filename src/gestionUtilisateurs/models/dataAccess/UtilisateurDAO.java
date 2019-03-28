@@ -39,6 +39,10 @@ public class UtilisateurDAO {
 		connect = ConnectDAO.getInstance();
 	}
 	
+	public boolean isURLConfEmpty() {
+		return ConnectDAO.isURLEmpty();
+	}
+	
 	/**
 	 * Métode d'insertion de nouvel utilisateur dans la base de données
 	 * 

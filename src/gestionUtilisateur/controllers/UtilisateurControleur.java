@@ -40,6 +40,10 @@ public class UtilisateurControleur {
 		this.userDAO.connectDatabase(userName, password);
 	}
 	
+	public boolean isURLConfEmpty() {
+		return userDAO.isURLConfEmpty();
+	}
+	
 	/**
 	 * Envoie au modèle pour insertion de nouvel utilisateur dans la base de données
 	 * 
