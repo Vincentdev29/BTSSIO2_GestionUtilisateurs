@@ -2,6 +2,7 @@ package gestionUtilisateur.controllers;
 
 import gestionUtilisateurs.models.dataAccess.UtilisateurDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import gestionUtilisateur.metier.Utilisateur;
@@ -63,6 +64,13 @@ public class UtilisateurControleur {
 	 */
 	public void modifierUtilisateur(Utilisateur utilisateur) {
 		this.userDAO.modifierUtilisateur(utilisateur);
+	}
+	
+	/**
+	 * Retourne une liste de tous les utilisateurs.
+	 */
+	public ArrayList<Utilisateur> getListeUtilisateurs(){
+		return userDAO.getListeUtilisateurs();
 	}
 	
 	/**
