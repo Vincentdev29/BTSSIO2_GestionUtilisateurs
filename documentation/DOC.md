@@ -22,6 +22,9 @@ Les maquettes ont été réalisées avec le logiciel [DIA](http://dia-installer.
 
 ![Maquette Modification Utilisateur](./Schema/Vue_application_ExportImg/Vue_application_-_Modification_Utilisateur.svg)
 
+<<<<<<< HEAD
 ## Diagramme des cas d'utilisation
 
 ## Diagramme de classe
+=======
+>>>>>>> Doc-UnitTest

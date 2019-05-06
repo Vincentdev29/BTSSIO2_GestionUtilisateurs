@@ -2,6 +2,7 @@ package gestionUtilisateur.controllers;
 
 import gestionUtilisateurs.models.dataAccess.UtilisateurDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import gestionUtilisateur.metier.Utilisateur;
@@ -40,6 +41,10 @@ public class UtilisateurControleur {
 		this.userDAO.connectDatabase(userName, password);
 	}
 	
+	public boolean isURLConfEmpty() {
+		return userDAO.isURLConfEmpty();
+	}
+	
 	/**
 	 * Envoie au modèle pour insertion de nouvel utilisateur dans la base de données
 	 * 
@@ -59,6 +64,13 @@ public class UtilisateurControleur {
 	 */
 	public void modifierUtilisateur(Utilisateur utilisateur) {
 		this.userDAO.modifierUtilisateur(utilisateur);
+	}
+	
+	/**
+	 * Retourne une liste de tous les utilisateurs.
+	 */
+	public ArrayList<Utilisateur> getListeUtilisateurs(){
+		return userDAO.getListeUtilisateurs();
 	}
 	
 	/**
