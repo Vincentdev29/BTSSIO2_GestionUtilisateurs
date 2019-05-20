@@ -202,4 +202,27 @@ public class UtilisateurDAO {
 		}
 		return lesUtilisateurs;
 	}
+	
+	/**
+	 * Retourne une liste de tous les utilisateurs contenant les informations : id, nom et  prenom
+	 * 
+	 * @return liste d'utilisateur
+	 */
+	public List<Utilisateur> getAllUtilisateurs(){
+		Utilisateur unUtilisateur = null;
+		List<Utilisateur> lesUtilisateurs = new ArrayList<Utilisateur>();
+		try {
+			PreparedStatement statement = connect.prepareStatement("select * from visiteur");
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				System.out.println(result.getString("id"));
+				unUtilisateur = new Utilisateur(result.getString("id"), result.getString("nom"),
+						result.getString("prenom"));
+				lesUtilisateurs.add(unUtilisateur);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lesUtilisateurs;
+	}
 }

@@ -106,4 +106,13 @@ public class UtilisateurControleur {
 	public List<Utilisateur> findByNom(String filtreNom) {
 		return this.userDAO.findByNom("%" + filtreNom + "%");
 	}
+	
+	/**
+	 *  Retourne une liste de tous les utilisateurs contenant les informations : id, nom et  prenom
+	 *  
+	 * @return liste d'utilisateurs
+	 */
+	public List<Utilisateur> getAllUtilisateurs(){
+		return this.userDAO.getAllUtilisateurs();
+	}
 }
