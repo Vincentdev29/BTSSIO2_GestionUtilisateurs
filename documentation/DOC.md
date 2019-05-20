@@ -22,6 +22,8 @@ Les maquettes ont été réalisées avec le logiciel [DIA](http://dia-installer.
 
 ![Maquette Modification Utilisateur](./Schema/Vue_application_ExportImg/Vue_application_-_Modification_Utilisateur.svg)
 
-## Diagramme des cas d'utilisation
+## Diagramme des cas d'utilisation - Chargé des Ressources Humaines
+
+![Diagramme Cas Utilisation - Chargé Ressources Humaines](./Schema/Diagramme_UML_ExportImg/Diagramme_des_cas_d'utilisation_Utilisateur_Chargé_RH_Gestion_Utilisateur.png)
 
 ## Diagramme de classe
