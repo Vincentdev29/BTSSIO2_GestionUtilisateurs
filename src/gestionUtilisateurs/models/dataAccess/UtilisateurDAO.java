@@ -105,6 +105,38 @@ public class UtilisateurDAO {
 	}
 	
 	/**
+	 * 
+	 * @return liste de tous les utilisateurs
+	 */
+	public ArrayList<Utilisateur> getListeUtilisateurs(){
+		ArrayList<Utilisateur> lesUtilisateurs = new ArrayList<Utilisateur>();
+		
+		try {
+			String query = "select id, nom, prenom, adresse, cp, ville, dateEmbauche, statut from visiteur";
+			PreparedStatement statement = connect.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			while(result.next()) {
+				Utilisateur utilisateur = new Utilisateur(
+						result.getString("id"),
+						result.getString("nom"),
+						result.getString("prenom"),
+						result.getString("adresse"),
+						result.getString("cp"),
+						result.getString("ville"),
+						result.getString("dateEmbauche"),
+						result.getString("statut")
+						);
+				lesUtilisateurs.add(utilisateur);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return lesUtilisateurs;
+	}
+	
+	/**
 	 * Retourne un utilisateur contenant toutes ces infos non liée à sa connexion
 	 * 
 	 * @param id identifiant de l'utilisateur à rechercher dans la BDD
@@ -163,6 +195,29 @@ public class UtilisateurDAO {
 				System.out.println(result.getString("id"));
 				unUtilisateur = new Utilisateur(result.getString("id"), result.getString("nom"),
 				result.getString("prenom"));
+				lesUtilisateurs.add(unUtilisateur);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lesUtilisateurs;
+	}
+	
+	/**
+	 * Retourne une liste de tous les utilisateurs contenant les informations : id, nom et  prenom
+	 * 
+	 * @return liste d'utilisateur
+	 */
+	public List<Utilisateur> getAllUtilisateurs(){
+		Utilisateur unUtilisateur = null;
+		List<Utilisateur> lesUtilisateurs = new ArrayList<Utilisateur>();
+		try {
+			PreparedStatement statement = connect.prepareStatement("select id, nom, prenom from visiteur group by nom, prenom ASC");
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				System.out.println(result.getString("id"));
+				unUtilisateur = new Utilisateur(result.getString("id"), result.getString("nom"),
+						result.getString("prenom"));
 				lesUtilisateurs.add(unUtilisateur);
 			}
 		} catch (SQLException e) {

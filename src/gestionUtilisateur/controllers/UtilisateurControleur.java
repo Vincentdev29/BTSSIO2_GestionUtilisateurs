@@ -2,6 +2,7 @@ package gestionUtilisateur.controllers;
 
 import gestionUtilisateurs.models.dataAccess.UtilisateurDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JTextField;
@@ -68,6 +69,13 @@ public class UtilisateurControleur {
 	}
 	
 	/**
+	 * Retourne une liste de tous les utilisateurs.
+	 */
+	public ArrayList<Utilisateur> getListeUtilisateurs(){
+		return userDAO.getListeUtilisateurs();
+	}
+	
+	/**
 	 * Envoie au modèle pour récupére les informations d'un utilisateur
 	 * 
 	 * @param id identifiant de l'utilisateur
@@ -100,5 +108,17 @@ public class UtilisateurControleur {
 	public List<Utilisateur> findByNom(String filtreNom) {
 		return this.userDAO.findByNom("%" + filtreNom + "%");
 	}
+<<<<<<< HEAD
 
+=======
+	
+	/**
+	 *  Retourne une liste de tous les utilisateurs contenant les informations : id, nom et  prenom
+	 *  
+	 * @return liste d'utilisateurs
+	 */
+	public List<Utilisateur> getAllUtilisateurs(){
+		return this.userDAO.getAllUtilisateurs();
+	}
+>>>>>>> ModeleDataAccess
 }

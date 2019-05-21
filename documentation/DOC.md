@@ -25,5 +25,3 @@ Les maquettes ont été réalisées avec le logiciel [DIA](http://dia-installer.
 ## Diagramme des cas d'utilisation
 
 ## Diagramme de classe
-
-## Diagramme de séquence

@@ -22,6 +22,7 @@ public class UtilisateurControleurUnitTest {
 
 	@Test
 	public void testInstanciationBDD() {
+		System.out.println("Test Instanciation lien base de données");
 		String userName = "root";
 		String password = "";
 		try {
@@ -30,5 +31,17 @@ public class UtilisateurControleurUnitTest {
 			e.printStackTrace();
 		}
 	}
-
+	
+	@Test
+	public void testGetListeUtilisateur() {
+		System.out.println("Test récupération liste des utilisateurs");
+		String userName = "root";
+		String password = "";
+		try {
+			controleur.connectDatabase(userName, password);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		controleur.getListeUtilisateurs();
+	}
 }
