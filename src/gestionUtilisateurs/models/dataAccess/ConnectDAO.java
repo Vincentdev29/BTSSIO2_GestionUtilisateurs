@@ -18,17 +18,17 @@ public class ConnectDAO {
 	/**
 	 * URL de connection
 	 */
-	private static String url = "jdbc:mysql://localhost/gsb-frais";
+	private static String url = "jdbc:mysql://localhost/sio2_applifrais";
 	
 	/**
 	 * Nom du user
 	 */
-	private static String user = "";
+	private static String user = "ts1";
 	
 	/**
 	 * Mot de passe du user
 	 */
-	private static String passwd = "";
+	private static String passwd = "ts1";
 	
 	
 	/**
