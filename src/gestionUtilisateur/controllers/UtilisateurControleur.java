@@ -4,6 +4,8 @@ import gestionUtilisateurs.models.dataAccess.UtilisateurDAO;
 
 import java.util.List;
 
+import javax.swing.JTextField;
+
 import gestionUtilisateur.metier.Utilisateur;
 
 /**
@@ -98,4 +100,5 @@ public class UtilisateurControleur {
 	public List<Utilisateur> findByNom(String filtreNom) {
 		return this.userDAO.findByNom("%" + filtreNom + "%");
 	}
+
 }

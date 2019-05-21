@@ -19,6 +19,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import gestionUtilisateur.controllers.UtilisateurControleur;
+import gestionUtilisateurs.models.dataAccess.ConnectDAO;
 
 public class ConnectionForm extends JFrame implements ActionListener
 {
@@ -77,21 +78,28 @@ public class ConnectionForm extends JFrame implements ActionListener
 
 	
 	public void actionPerformed(ActionEvent e) 
-	{	
+	{	 
 		Object source = e.getSource();
 		if(source == btnValider)
 		{
 			System.out.println("Vous avez cliqué sur valider !");
 			try
 			{
-				utilisateurControleur.connectDatabase(txtLogin.toString(), txtMDP.toString());
-				fenetre.setVisible(false);
-				Accueil frame = new Accueil(utilisateurControleur);
-				frame.setVisible(true);
+				utilisateurControleur.connectDatabase(txtLogin.getText(), txtMDP.getText());
 			}
 			catch(Exception ex)
 			{
 				ex.printStackTrace();
+			}
+			
+			if(ConnectDAO.getInstance() != null){
+				fenetre.setVisible(false);
+				Accueil frame = new Accueil(utilisateurControleur);
+				frame.setVisible(true);
+			}else{
+				System.out.println("la connection n'a pas marché !");
+				JOptionPane msgErreur = new JOptionPane();
+				msgErreur.showMessageDialog(null, "Message d'erreur", "Erreur", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		else
