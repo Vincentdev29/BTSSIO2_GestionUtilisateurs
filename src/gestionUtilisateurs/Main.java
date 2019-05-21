@@ -11,9 +11,9 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		UtilisateurControleur controleur = new UtilisateurControleur();
 		controleur.connectDatabase("ts1", "ts1");
-		// thème
+		// thï¿½me
 		UIManager.setLookAndFeel( new NimbusLookAndFeel() );
-		
+
 		NouvelUtilisateurForm appli = new NouvelUtilisateurForm(controleur);
 		appli.setVisible(true);
 	}
