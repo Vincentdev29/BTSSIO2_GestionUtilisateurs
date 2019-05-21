@@ -212,7 +212,7 @@ public class UtilisateurDAO {
 		Utilisateur unUtilisateur = null;
 		List<Utilisateur> lesUtilisateurs = new ArrayList<Utilisateur>();
 		try {
-			PreparedStatement statement = connect.prepareStatement("select * from visiteur");
+			PreparedStatement statement = connect.prepareStatement("select id, nom, prenom from visiteur group by nom, prenom ASC");
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
 				System.out.println(result.getString("id"));
