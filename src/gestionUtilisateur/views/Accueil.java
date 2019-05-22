@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -20,6 +22,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import gestionUtilisateur.controllers.UtilisateurControleur;
+import gestionUtilisateur.metier.Utilisateur;
 import gestionUtilisateurs.models.dataAccess.ConnectDAO;
 
 public class Accueil extends JFrame
@@ -27,7 +30,7 @@ public class Accueil extends JFrame
 	private UtilisateurControleur utilisateurControleur;
 	
 	JPanel fenetre = new JPanel(new GridBagLayout());
-
+ 
 	private JLabel labNom = new JLabel("Nom: ");
 	private JLabel labId = new JLabel("Id: ");
 	
@@ -40,7 +43,7 @@ public class Accueil extends JFrame
 	private JButton btnModifierUtilisateur = new JButton("Modifier utilisateur");
 	
 	private String titre[] = {"id", "nom", "prenom"};
-	private Object[][] donnees = {}; // A changer selon la fonction de Vincent
+	private Object[][] donnees;
 	private JTable tableau = new JTable(donnees, titre);
 	
 	public Accueil(UtilisateurControleur u)
@@ -87,8 +90,24 @@ public class Accueil extends JFrame
 		fenetre.add(tableau, constraints);
 		
 		add(fenetre);
-		pack();
+//		pack();
 		setLocationRelativeTo(null);
+	}
+	
+	private HashMap<String, String[]> genererTableau()
+	{
+		HashMap<String, String[]> data = new HashMap<String, String[]>();
+
+	    // Add keys and values (Country, City)
+	    // capitalCities.put("England", "London");
+		for (Utilisateur utilisateur : this.utilisateurControleur.getAllUtilisateurs()) 
+		{
+			String[] temp = {utilisateur.getNom(), utilisateur.getPrenom()};
+			data.put(utilisateur.getId(), temp);
+		}
+	    
+	    
+		return data;
 	}
 	
 	public void actionPerformed(ActionEvent e) 
@@ -126,8 +145,8 @@ public class Accueil extends JFrame
 		{
 			if(ConnectDAO.getInstance() != null){
 				fenetre.setVisible(false);
-				NouvelUtilisateurForm frame = new NouvelUtilisateurForm(utilisateurControleur);
-				frame.setVisible(true);
+				//NouvelUtilisateurForm frame = new NouvelUtilisateurForm(utilisateurControleur);
+				//frame.setVisible(true);
 			}else{
 				System.out.println("la connection n'a pas marché !");
 				JOptionPane msgErreur = new JOptionPane();
@@ -139,8 +158,8 @@ public class Accueil extends JFrame
 		{
 			if(ConnectDAO.getInstance() != null){
 				fenetre.setVisible(false);
-				ModifierUtilisateurForm frame = new ModifierUtilisateurForm(utilisateurControleur);
-				frame.setVisible(true);
+				//ModifierUtilisateurForm frame = new ModifierUtilisateurForm(utilisateurControleur);
+				//frame.setVisible(true);
 			}else{
 				System.out.println("la connection n'a pas marché !");
 				JOptionPane msgErreur = new JOptionPane();
