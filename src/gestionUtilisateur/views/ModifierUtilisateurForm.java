@@ -19,6 +19,8 @@ import gestionUtilisateur.metier.Utilisateur;
 
 public class ModifierUtilisateurForm extends JFrame implements ActionListener{
 	
+	JPanel fenetre = new JPanel(new GridBagLayout());
+	
 	private UtilisateurControleur controleur;
 	private JLabel labId = new JLabel("Id : ");
 	private JLabel labPrenom = new JLabel("Prenom : ");
@@ -37,18 +39,17 @@ public class ModifierUtilisateurForm extends JFrame implements ActionListener{
 	private JTextField txtVille = new JTextField(10);
 	private JTextField txtDate = new JTextField(10);
 	private JButton btnValider = new JButton("Modifier un utilisateur");
+	private JButton btnRetour = new JButton("Retour");
 	
 	public ModifierUtilisateurForm(UtilisateurControleur controleur, String id){
 		this.controleur = controleur;
 		Utilisateur unUtilisateur = this.controleur.findByIdInfoUtilisateur(id);
 		
-		this.setLocationRelativeTo(null);
+		
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setSize(700, 500);
-		this.setVisible(true);
 		
 		
-		JPanel fenetre = new JPanel(new GridBagLayout());
+		
 		fenetre.setBackground(Color.CYAN);
 		fenetre.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Modifier un utilisateur"));
 		
@@ -118,7 +119,14 @@ public class ModifierUtilisateurForm extends JFrame implements ActionListener{
 		fenetre.add(btnValider, constraints);
 		btnValider.addActionListener(this);
 		
+		constraints.gridx = 2;
+		constraints.gridy = 6;
+		fenetre.add(btnRetour, constraints);
+		btnRetour.addActionListener(this);
+		
 		this.add(fenetre);
+		pack();
+		this.setLocationRelativeTo(null);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -126,6 +134,16 @@ public class ModifierUtilisateurForm extends JFrame implements ActionListener{
 		if(source == btnValider){
 			Utilisateur utilisateur = new Utilisateur(txtId.getText(), txtPrenom.getText(), txtNom.getText(), txtAdr.getText(), txtCodePo.getText(), txtVille.getText(), txtDate.getText(), txtStatut.getText());
 			this.controleur.modifierUtilisateur(utilisateur);
+			this.dispose();
+			Accueil frame = new Accueil(controleur);
+			frame.setVisible(true);
+		}
+		
+		if (source == btnRetour)
+		{
+			this.dispose();
+			Accueil frame = new Accueil(controleur);
+			frame.setVisible(true);
 		}
 		
 	}

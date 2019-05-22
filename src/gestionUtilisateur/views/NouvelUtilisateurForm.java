@@ -19,6 +19,8 @@ import gestionUtilisateur.metier.Utilisateur;
 
 public class NouvelUtilisateurForm extends JFrame implements ActionListener{
 	
+	JPanel fenetre = new JPanel(new GridBagLayout());
+	
 	private UtilisateurControleur controleur;
 	private JLabel labId = new JLabel("Id : ");
 	private JLabel labPrenom = new JLabel("Prenom : ");
@@ -41,16 +43,13 @@ public class NouvelUtilisateurForm extends JFrame implements ActionListener{
 	private JTextField txtIdentifiant = new JTextField(10);
 	private JTextField txtMdp = new JTextField(10);
 	private JButton btnValider = new JButton("Créer un utilisateur");
+	private JButton btnRetour = new JButton("Retour");
 	
 	public NouvelUtilisateurForm(UtilisateurControleur controleur){
 		this.controleur = controleur;
-		this.setLocationRelativeTo(null);
+		
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setSize(700, 500);
-		this.setVisible(true);
 		
-		
-		JPanel fenetre = new JPanel(new GridBagLayout());
 		fenetre.setBackground(Color.CYAN);
 		fenetre.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Un Nouvel Utilisateur"));
 		
@@ -124,14 +123,33 @@ public class NouvelUtilisateurForm extends JFrame implements ActionListener{
 		fenetre.add(btnValider, constraints);
 		btnValider.addActionListener(this);
 		
+		constraints.gridx = 2;
+		constraints.gridy = 6;
+		fenetre.add(btnRetour, constraints);
+		btnRetour.addActionListener(this);
+		
 		this.add(fenetre);
+		pack();
+		setLocationRelativeTo(null);
+		
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) 
+	{
 		Object source = e.getSource();
 		if(source == btnValider){
 			Utilisateur utilisateur = new Utilisateur(txtId.getText(), txtPrenom.getText(), txtNom.getText(), txtAdr.getText(), txtCodePo.getText(), txtVille.getText(), txtDate.getText(), txtStatut.getText());
 			this.controleur.creerNouvelUtilisateur(utilisateur, txtIdentifiant.getText(), txtMdp.getText(), txtDate.getText());
+			this.dispose();
+			Accueil frame = new Accueil(controleur);
+			frame.setVisible(true);
+		}
+		
+		if (source == btnRetour)
+		{
+			this.dispose();
+			Accueil frame = new Accueil(controleur);
+			frame.setVisible(true);
 		}
 		
 	}

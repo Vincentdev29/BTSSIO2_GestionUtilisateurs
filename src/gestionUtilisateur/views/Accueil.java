@@ -6,8 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.List;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -15,17 +14,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
+
+import com.sun.glass.events.MouseEvent;
 
 import gestionUtilisateur.controllers.UtilisateurControleur;
-import gestionUtilisateur.metier.Utilisateur;
+import gestionUtilisateur.models.UtilisateurJTableModel;
 import gestionUtilisateurs.models.dataAccess.ConnectDAO;
 
-public class Accueil extends JFrame
+public class Accueil extends JFrame implements ActionListener, MouseListener
 {
 	private UtilisateurControleur utilisateurControleur;
 	
@@ -42,14 +41,16 @@ public class Accueil extends JFrame
 	private JButton btnNouvelUtilisateur = new JButton("Nouvel utilisateur");
 	private JButton btnModifierUtilisateur = new JButton("Modifier utilisateur");
 	
-	private String titre[] = {"id", "nom", "prenom"};
-	private Object[][] donnees;
-	private JTable tableau = new JTable(donnees, titre);
+	private UtilisateurJTableModel utilisateurJTableModel = new UtilisateurJTableModel();
+	private JTable tableau = new JTable(utilisateurJTableModel);
+	private JScrollPane jscrollpane = new JScrollPane(tableau);
+	
 	
 	public Accueil(UtilisateurControleur u)
 	{
 		this.utilisateurControleur = u;
-		
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		utilisateurJTableModel.loadData(u.getAllUtilisateurs());
 		
 		fenetre.setBackground(Color.cyan);
 		
@@ -68,6 +69,7 @@ public class Accueil extends JFrame
 		
 		constraints.gridx = 2;
 		fenetre.add(btnChercherNom, constraints);
+		btnChercherNom.addActionListener(this);
 		
 		constraints.gridx = 3;
 		fenetre.add(labId, constraints);
@@ -77,39 +79,28 @@ public class Accueil extends JFrame
 		
 		constraints.gridx = 5;
 		fenetre.add(btnChercherId, constraints);
+		btnChercherId.addActionListener(this);
 		
 		constraints.gridx = 5;
 		constraints.gridy = 1;
 		fenetre.add(btnNouvelUtilisateur, constraints);
+		btnNouvelUtilisateur.addActionListener(this);
 		
 		constraints.gridy = 2;
 		fenetre.add(btnModifierUtilisateur, constraints);
+		btnModifierUtilisateur.addActionListener(this);
+		tableau.addMouseListener(this);
 		
-		constraints.gridx = 0;
+		constraints.gridx = 2;
 		constraints.gridy = 1;
-		fenetre.add(tableau, constraints);
+		fenetre.add(jscrollpane, constraints);
+		
 		
 		add(fenetre);
-//		pack();
+		pack();
 		setLocationRelativeTo(null);
 	}
-	
-	private HashMap<String, String[]> genererTableau()
-	{
-		HashMap<String, String[]> data = new HashMap<String, String[]>();
-
-	    // Add keys and values (Country, City)
-	    // capitalCities.put("England", "London");
-		for (Utilisateur utilisateur : this.utilisateurControleur.getAllUtilisateurs()) 
-		{
-			String[] temp = {utilisateur.getNom(), utilisateur.getPrenom()};
-			data.put(utilisateur.getId(), temp);
-		}
-	    
-	    
-		return data;
-	}
-	
+		
 	public void actionPerformed(ActionEvent e) 
 	{	 
 		Object source = e.getSource();
@@ -117,7 +108,8 @@ public class Accueil extends JFrame
 		{
 			if (txtNom != null) // A tester
 			{
-				utilisateurControleur.findByNom(txtNom.toString());
+				utilisateurJTableModel.loadData(utilisateurControleur.findByNom(txtNom.getText()));
+				txtNom.setText("");
 			}
 			else
 			{
@@ -131,40 +123,82 @@ public class Accueil extends JFrame
 		{
 			if (txtId != null)
 			{
-				utilisateurControleur.findById(txtId.toString());
+				utilisateurJTableModel.loadDataa(utilisateurControleur.findById(txtId.getText()));
+				txtId.setText("");
 			}
 			else
 			{
 				JOptionPane msgErreur = new JOptionPane();
 				msgErreur.showMessageDialog(null, "Message d'erreur", "Aucun id demander", JOptionPane.ERROR_MESSAGE);
 			}
-			
 		}
 		
-		if (source == btnNouvelUtilisateur) // En attente du merge avec QT
+		if (source == btnNouvelUtilisateur) 
 		{
 			if(ConnectDAO.getInstance() != null){
-				fenetre.setVisible(false);
-				//NouvelUtilisateurForm frame = new NouvelUtilisateurForm(utilisateurControleur);
-				//frame.setVisible(true);
+				this.dispose();
+				NouvelUtilisateurForm frame = new NouvelUtilisateurForm(utilisateurControleur);
+				frame.setVisible(true);
 			}else{
-				System.out.println("la connection n'a pas marché !");
 				JOptionPane msgErreur = new JOptionPane();
 				msgErreur.showMessageDialog(null, "Message d'erreur", "Erreur", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		
-		if (source == btnModifierUtilisateur) // En attente du merge avec QT
+		if (source == btnModifierUtilisateur) 
 		{
 			if(ConnectDAO.getInstance() != null){
-				fenetre.setVisible(false);
-				//ModifierUtilisateurForm frame = new ModifierUtilisateurForm(utilisateurControleur);
-				//frame.setVisible(true);
+				int row = tableau.getSelectedRow();
+				String id = tableau.getValueAt(row, 0).toString();
+				System.out.println(id);
+				this.dispose();
+				ModifierUtilisateurForm frame = new ModifierUtilisateurForm(utilisateurControleur, id);
+				frame.setVisible(true);
 			}else{
-				System.out.println("la connection n'a pas marché !");
 				JOptionPane msgErreur = new JOptionPane();
 				msgErreur.showMessageDialog(null, "Message d'erreur", "Erreur", JOptionPane.ERROR_MESSAGE);
 			}
 		}
+		
+		
 	}
+	
+	
+
+	@Override
+	public void mouseClicked(java.awt.event.MouseEvent e) 
+	{
+		Object source = e.getSource();
+		if(e.getClickCount() == 1)
+        {
+			System.out.println("tableau cliquer");
+			tableau = (JTable)e.getSource();	
+        }
+	}
+
+	@Override
+	public void mouseEntered(java.awt.event.MouseEvent arg0) {
+		// TODO Stub de la méthode généré automatiquement
+		
+	}
+
+	@Override
+	public void mouseExited(java.awt.event.MouseEvent arg0) {
+		// TODO Stub de la méthode généré automatiquement
+		
+	}
+
+	@Override
+	public void mousePressed(java.awt.event.MouseEvent arg0) {
+		// TODO Stub de la méthode généré automatiquement
+		
+	}
+
+	@Override
+	public void mouseReleased(java.awt.event.MouseEvent arg0) {
+		// TODO Stub de la méthode généré automatiquement
+		
+	}
+	
+	
 }

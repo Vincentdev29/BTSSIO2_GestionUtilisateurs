@@ -70,7 +70,7 @@ public class ConnectionForm extends JFrame implements ActionListener
 		fenetre.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Connection"));
 	
 		// add the panel to this frame
-		add(fenetre);
+		this.add(fenetre);
 	
 		pack();
 		setLocationRelativeTo(null);
@@ -82,7 +82,6 @@ public class ConnectionForm extends JFrame implements ActionListener
 		Object source = e.getSource();
 		if(source == btnValider)
 		{
-			System.out.println("Vous avez cliqué sur valider !");
 			try
 			{
 				utilisateurControleur.connectDatabase(txtLogin.getText(), txtMDP.getText());
@@ -92,11 +91,14 @@ public class ConnectionForm extends JFrame implements ActionListener
 				ex.printStackTrace();
 			}
 			
-			if(ConnectDAO.getInstance() != null){
-				fenetre.setVisible(false);
+			if(ConnectDAO.getInstance() != null)
+			{
+				this.dispose();
 				Accueil frame = new Accueil(utilisateurControleur);
 				frame.setVisible(true);
-			}else{
+			}
+			else
+			{
 				System.out.println("la connection n'a pas marché !");
 				JOptionPane msgErreur = new JOptionPane();
 				msgErreur.showMessageDialog(null, "Message d'erreur", "Erreur", JOptionPane.ERROR_MESSAGE);

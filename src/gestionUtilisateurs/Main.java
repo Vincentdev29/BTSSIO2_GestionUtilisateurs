@@ -9,6 +9,7 @@ import com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel;
 import gestionUtilisateur.controllers.UtilisateurControleur;
 import gestionUtilisateur.views.Accueil;
 import gestionUtilisateur.views.ConnectionForm;
+import gestionUtilisateur.views.NouvelUtilisateurForm;
 
 public class Main 
 {

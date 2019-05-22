@@ -172,7 +172,6 @@ public class UtilisateurDAO {
 			ResultSet result = statement.executeQuery();
 			if (result.first())
 				unUtilisateur = new Utilisateur(id, result.getString("nom"), result.getString("prenom"));
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
