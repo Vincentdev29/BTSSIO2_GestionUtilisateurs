@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import gestionUtilisateur.controllers.UtilisateurControleur;
 import gestionUtilisateur.metier.Utilisateur;
 
-public class NouvelUtilisateurForm extends JFrame implements ActionListener{
+public class ModifierUtilisateurForm extends JFrame implements ActionListener{
 	
 	private UtilisateurControleur controleur;
 	private JLabel labId = new JLabel("Id : ");
@@ -28,8 +28,6 @@ public class NouvelUtilisateurForm extends JFrame implements ActionListener{
 	private JLabel labCodePo = new JLabel("Code Postal : ");
 	private JLabel labVille = new JLabel("Ville : ");
 	private JLabel labDate = new JLabel("Date embauche : (JJ-MM-AAAA)");
-	private JLabel labIdentifiant = new JLabel("Identifiant : ");
-	private JLabel labMdp = new JLabel("Mot de passe : ");
 	private JTextField txtId = new JTextField(10);
 	private JTextField txtPrenom = new JTextField(10);
 	private JTextField txtNom = new JTextField(10);
@@ -38,12 +36,12 @@ public class NouvelUtilisateurForm extends JFrame implements ActionListener{
 	private JTextField txtCodePo = new JTextField(10);
 	private JTextField txtVille = new JTextField(10);
 	private JTextField txtDate = new JTextField(10);
-	private JTextField txtIdentifiant = new JTextField(10);
-	private JTextField txtMdp = new JTextField(10);
-	private JButton btnValider = new JButton("Créer un utilisateur");
+	private JButton btnValider = new JButton("Modifier un utilisateur");
 	
-	public NouvelUtilisateurForm(UtilisateurControleur controleur){
+	public ModifierUtilisateurForm(UtilisateurControleur controleur, String id){
 		this.controleur = controleur;
+		Utilisateur unUtilisateur = this.controleur.findByIdInfoUtilisateur(id);
+		
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setSize(700, 500);
@@ -52,7 +50,7 @@ public class NouvelUtilisateurForm extends JFrame implements ActionListener{
 		
 		JPanel fenetre = new JPanel(new GridBagLayout());
 		fenetre.setBackground(Color.CYAN);
-		fenetre.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Un Nouvel Utilisateur"));
+		fenetre.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Modifier un utilisateur"));
 		
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.anchor = GridBagConstraints.WEST;
@@ -64,11 +62,13 @@ public class NouvelUtilisateurForm extends JFrame implements ActionListener{
 		fenetre.add(labId, constraints);
 		constraints.gridx = 1;
 		fenetre.add(txtId, constraints);
+		this.txtId.setText(unUtilisateur.getId());
 
 		constraints.gridx = 2;
 		fenetre.add(labAdr, constraints);
 		constraints.gridx = 3;
 		fenetre.add(txtAdr, constraints);
+		this.txtAdr.setText(unUtilisateur.getAdresse());
 		
 		constraints.gridy = 1;
 		
@@ -76,11 +76,13 @@ public class NouvelUtilisateurForm extends JFrame implements ActionListener{
 		fenetre.add(labPrenom, constraints);
 		constraints.gridx = 1;
 		fenetre.add(txtPrenom, constraints);
+		this.txtPrenom.setText(unUtilisateur.getPrenom());
 		
 		constraints.gridx = 2;
 		fenetre.add(labCodePo, constraints);
 		constraints.gridx = 3;
 		fenetre.add(txtCodePo, constraints);
+		this.txtCodePo.setText(unUtilisateur.getCp());
 		
 		constraints.gridy = 2;
 		
@@ -88,11 +90,13 @@ public class NouvelUtilisateurForm extends JFrame implements ActionListener{
 		fenetre.add(labNom, constraints);
 		constraints.gridx = 1;
 		fenetre.add(txtNom, constraints);
+		this.txtNom.setText(unUtilisateur.getNom());
 		
 		constraints.gridx = 2;
 		fenetre.add(labVille, constraints);
 		constraints.gridx = 3;
 		fenetre.add(txtVille, constraints);
+		this.txtVille.setText(unUtilisateur.getVille());
 		
 		constraints.gridy = 3;
 		
@@ -100,25 +104,15 @@ public class NouvelUtilisateurForm extends JFrame implements ActionListener{
 		fenetre.add(labStatut, constraints);
 		constraints.gridx = 1;
 		fenetre.add(txtStatut, constraints);
+		this.txtStatut.setText(unUtilisateur.getStatut());
 		
 		constraints.gridx = 2;
 		fenetre.add(labDate, constraints);
 		constraints.gridx = 3;
 		fenetre.add(txtDate, constraints);
+		this.txtDate.setText(unUtilisateur.getDateEmbauche());
 		
 		constraints.gridy = 4;
-		
-		constraints.gridx = 0;
-		fenetre.add(labIdentifiant, constraints);
-		constraints.gridx = 1;
-		fenetre.add(txtIdentifiant, constraints);
-		
-		constraints.gridy = 5;
-		
-		constraints.gridx = 0;
-		fenetre.add(labMdp, constraints);
-		constraints.gridx = 1;
-		fenetre.add(txtMdp, constraints);
 		
 		constraints.gridx = 2;
 		fenetre.add(btnValider, constraints);
@@ -131,12 +125,8 @@ public class NouvelUtilisateurForm extends JFrame implements ActionListener{
 		Object source = e.getSource();
 		if(source == btnValider){
 			Utilisateur utilisateur = new Utilisateur(txtId.getText(), txtPrenom.getText(), txtNom.getText(), txtAdr.getText(), txtCodePo.getText(), txtVille.getText(), txtDate.getText(), txtStatut.getText());
-			this.controleur.creerNouvelUtilisateur(utilisateur, txtIdentifiant.getText(), txtMdp.getText(), txtDate.getText());
+			this.controleur.modifierUtilisateur(utilisateur);
 		}
 		
 	}
-	
-	
-	
-	
 }
