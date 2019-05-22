@@ -15,19 +15,19 @@ public class Main
 	public static void main(String[] args) throws Exception
 	{
 		UtilisateurControleur utilisateurControleur = new UtilisateurControleur();
-		
+
 		//UIManager.setLookAndFeel( new NimbusLookAndFeel() );
-		
-		EventQueue.invokeLater(new Runnable() 
+
+		EventQueue.invokeLater(new Runnable()
 		{
-			public void run() 
+			public void run()
 			{
-				try 
+				try
 				{
 					ConnectionForm frame = new ConnectionForm(utilisateurControleur);
 					frame.setVisible(true);
-				} 
-				catch (Exception e) 
+				}
+				catch (Exception e)
 				{
 					e.printStackTrace();
 				}

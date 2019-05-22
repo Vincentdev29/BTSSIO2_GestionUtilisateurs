@@ -42,6 +42,6 @@ public class UtilisateurControleurUnitTest {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		controleur.getListeUtilisateurs();
+		System.out.println(controleur.getListeUtilisateurs());
 	}
 }
