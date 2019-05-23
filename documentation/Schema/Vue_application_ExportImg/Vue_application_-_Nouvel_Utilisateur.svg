@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="11cm" height="9cm" viewBox="8 9 213 162" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="10" y="30" width="210" height="140"/>
+  <g>
+    <rect style="fill: #ffffff" x="10" y="10" width="120" height="19.5094"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="10" y="10" width="120" height="19.5094"/>
+  </g>
+  <text font-size="11.2889" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="70" y="23.5153">
+    <tspan x="70" y="23.5153">Nouvel utilisateur</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="10" y="30" width="210" height="140"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="10" y="30" width="210" height="140"/>
+  </g>
+  <g>
+    <text font-size="7.90222" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="20" y="52.635">
+      <tspan x="20" y="52.635">Id :</tspan>
+    </text>
+    <g>
+      <rect style="fill: #ffffff" x="65.1744" y="45" width="40" height="10"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="65.1744" y="45" width="40" height="10"/>
+    </g>
+  </g>
+  <g>
+    <text font-size="7.90222" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="20" y="92.75">
+      <tspan x="20" y="92.75">Nom :</tspan>
+    </text>
+    <g>
+      <rect style="fill: #ffffff" x="65.1744" y="85" width="40" height="10"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="65.1744" y="85" width="40" height="10"/>
+    </g>
+  </g>
+  <g>
+    <text font-size="7.90222" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="20" y="72.75">
+      <tspan x="20" y="72.75">Prenom  :</tspan>
+    </text>
+    <g>
+      <rect style="fill: #ffffff" x="65.1744" y="65" width="40" height="10"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="65.1744" y="65" width="40" height="10"/>
+    </g>
+  </g>
+  <g>
+    <text font-size="7.90222" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="20" y="112.75">
+      <tspan x="20" y="112.75">Statut :</tspan>
+    </text>
+    <g>
+      <rect style="fill: #ffffff" x="65.1744" y="105" width="40" height="10"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="65.1744" y="105" width="40" height="10"/>
+    </g>
+  </g>
+  <g>
+    <g>
+      <rect style="fill: #e6e6fa" x="170" y="140" width="40" height="20"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="170" y="140" width="40" height="20"/>
+    </g>
+    <text font-size="6.77333" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="190" y="148.092">
+      <tspan x="190" y="148.092">Créer</tspan>
+      <tspan x="190" y="156.558">utilisateur</tspan>
+    </text>
+  </g>
+  <g>
+    <g>
+      <text font-size="7.90222" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="111.636" y="49.8">
+        <tspan x="111.636" y="49.8">Adresse : </tspan>
+      </text>
+      <g>
+        <rect style="fill: #ffffff" x="168.179" y="42.05" width="40" height="10"/>
+        <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="168.179" y="42.05" width="40" height="10"/>
+      </g>
+    </g>
+    <g>
+      <text font-size="7.90222" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="111.636" y="73.775">
+        <tspan x="111.636" y="73.775">Code postal : </tspan>
+      </text>
+      <g>
+        <rect style="fill: #ffffff" x="168.179" y="66.025" width="40" height="10"/>
+        <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="168.179" y="66.025" width="40" height="10"/>
+      </g>
+    </g>
+    <g>
+      <text font-size="7.90222" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="111.636" y="97.75">
+        <tspan x="111.636" y="97.75">Ville : </tspan>
+      </text>
+      <g>
+        <rect style="fill: #ffffff" x="168.179" y="90" width="40" height="10"/>
+        <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="168.179" y="90" width="40" height="10"/>
+      </g>
+    </g>
+  </g>
+  <g>
+    <text font-size="7.90222" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="20" y="157.27">
+      <tspan x="20" y="157.27">Mot de passe :</tspan>
+    </text>
+    <g>
+      <rect style="fill: #ffffff" x="81.9956" y="149.52" width="40" height="10"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="81.9956" y="149.52" width="40" height="10"/>
+    </g>
+  </g>
+  <g>
+    <text font-size="7.90222" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="20" y="137.657">
+      <tspan x="20" y="137.657">Identifiant :</tspan>
+    </text>
+    <g>
+      <rect style="fill: #ffffff" x="81.9956" y="129.907" width="40" height="10"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="81.9956" y="129.907" width="40" height="10"/>
+    </g>
+  </g>
+</svg>
