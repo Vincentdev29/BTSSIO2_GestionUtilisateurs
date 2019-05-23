@@ -170,6 +170,7 @@ public class Utilisateur
 
 	/**
 	 * @see java.lang.Object#toString()
+	 * Retourne une chaine affichant l'id, le nom et le prenom de l'utilisateur.
 	 */
 	@Override
 	public String toString() {

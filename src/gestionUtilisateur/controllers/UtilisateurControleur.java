@@ -10,8 +10,8 @@ import javax.swing.JTextField;
 import gestionUtilisateur.metier.Utilisateur;
 
 /**
- * Controleur des fonctionnalit�s li�es aux utilisateurs
- * Op�re le lien entre l'interface graphique et les mod�les
+ * Controleur des fonctionnalites liees aux utilisateurs
+ * Opere le lien entre l'interface graphique et les modeles
  *
  */
 public class UtilisateurControleur {
@@ -22,19 +22,7 @@ public class UtilisateurControleur {
 	}
 
 	/**
-	 * Retour de l'objet UtilisateurDAO
-	 *
-	 * @return l'objet dao
-	 */
-	// Comment� le temps de d�termin� son utilit� et son niveau de s�curit�
-	/*
-	public UtilisateurDAO getDAO(){
-		return userDAO;
-	}
-	*/
-
-	/**
-	 * Envoie au mod�le les informations de connection
+	 * Envoie au modele les informations de connection
 	 *
 	 * @param userName pseudo de l'utilisateur
 	 * @param password mot de passe utilisateur
@@ -48,7 +36,7 @@ public class UtilisateurControleur {
 	}
 
 	/**
-	 * Envoie au mod�le pour insertion de nouvel utilisateur dans la base de donn�es
+	 * Envoie au modele pour insertion de nouvel utilisateur dans la base de donnees
 	 *
 	 * @param utilisateur
 	 * @param login
@@ -60,7 +48,7 @@ public class UtilisateurControleur {
 	}
 
 	/**
-	 * Envoie au mod�le pour modification d'utilisateur dans la base de donn�es
+	 * Envoie au modele pour modification d'utilisateur dans la base de donnees
 	 *
 	 * @param utilisateur
 	 */
@@ -76,7 +64,7 @@ public class UtilisateurControleur {
 	}
 
 	/**
-	 * Envoie au mod�le pour r�cup�re les informations d'un utilisateur
+	 * Envoie au modele pour recuperer les informations d'un utilisateur
 	 *
 	 * @param id identifiant de l'utilisateur
 	 * @return utilisateur
@@ -86,7 +74,7 @@ public class UtilisateurControleur {
 	}
 
 	/**
-	 * Retire l'utilisateur gr�ce � son id
+	 * Retire l'utilisateur grace a son id
 	 *
 	 * @param id
 	 * @return utilisateur
@@ -96,9 +84,9 @@ public class UtilisateurControleur {
 	}
 
 	/**
-	 * Retire une liste d'utilisateur gr�ce � leur nom
+	 * Retire une liste d'utilisateur grace a leur nom
 	 *
-	 * Le signe '%' est ajout� pour la requ�te SQL
+	 * Le signe '%' est ajouter pour la requete SQL
 	 * qui permettra la recherche de toutes les chaines qui
 	 * contienne le nom ou la chaine envoyer.
 	 *

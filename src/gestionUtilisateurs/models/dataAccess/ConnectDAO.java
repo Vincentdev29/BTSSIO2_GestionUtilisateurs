@@ -9,8 +9,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 /**
- * Repr�sente une connection � la base de donn�es
- * Classe bas�e sur le design pattern singleton
+ * Represente une connection a la base de donnees
+ * Classe basee sur le design pattern singleton
  * qui garantie l'utilisation d'une seule instance de l'objet.
  *
  * Tous les constituants de cette classe sont statiques
@@ -42,8 +42,8 @@ public class ConnectDAO {
 
 	/**
 	 *
-	 * M�thode de param�trage des identifiants
-	 * et mot de passe pour s'identifier � la base de donn�es
+	 * Methode de parametrage des identifiants
+	 * et mot de passe pour s'identifier a la base de donnees
 	 *
 	 * @param userName pseudo de l'utilisateur
 	 * @param userPassword mot de passe de l'utilisateur
@@ -55,7 +55,7 @@ public class ConnectDAO {
 	}
 
 	/**
-	 * Genere une url pour la connection � la base de donn�es.
+	 * Genere une url pour la connection a la base de donnees.
 	 * Information provenant du fichier de configuration.
 	 */
 	public static void generateJDBCUrl() {
@@ -95,7 +95,7 @@ public class ConnectDAO {
 
 	/**
 	 *
-	 * @return �tat de l'url
+	 * @return etat de l'url
 	 */
 	public static boolean isURLEmpty() {
 		if(url == "") {
@@ -106,8 +106,8 @@ public class ConnectDAO {
 	}
 
 	/**
-	 * M�thode qui va nous retourner notre instance
-	 * et la cr�er si elle n'existe pas...
+	 * Methode qui va nous retourner notre instance
+	 * et la creer si elle n'existe pas...
 	 * @return un objet de connection
 	 */
 	public static Connection getInstance(){
@@ -123,7 +123,7 @@ public class ConnectDAO {
 	}
 
 	/**
-	 * M�thode qui met fin � la connection
+	 * Methode qui met fin a la connection
 	 */
 	public static void close(){
 		if(connect != null){
