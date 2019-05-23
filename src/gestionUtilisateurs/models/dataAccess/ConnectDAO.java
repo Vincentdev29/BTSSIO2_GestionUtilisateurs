@@ -27,12 +27,12 @@ public class ConnectDAO {
 	/**
 	 * Nom du user
 	 */
-	private static String user = "ts1";
+	private static String user = "";
 
 	/**
 	 * Mot de passe du user
 	 */
-	private static String passwd = "ts1";
+	private static String passwd = "";
 
 
 	/**
