@@ -1,3 +1,7 @@
 gestionUtilisateur.controllers
 gestionUtilisateur.metier
+gestionUtilisateur.models
+gestionUtilisateur.unitTest
+gestionUtilisateur.views
+gestionUtilisateurs
 gestionUtilisateurs.models.dataAccess
